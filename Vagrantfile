@@ -4,6 +4,14 @@ Vagrant.configure(2) do |config|
 
   config.vm.network "forwarded_port", guest: 9090, host: 9090
 
+  config.vm.provider "virtualbox" do |vb|
+    ### Change network card to PCnet-FAST III
+    # For NAT adapter
+    vb.customize ["modifyvm", :id, "--nictype1", "Am79C973"]
+    # For host-only adapter
+    vb.customize ["modifyvm", :id, "--nictype2", "Am79C973"]
+  end
+
   config.vm.provision "shell", inline: <<-SHELL
 	  sudo apt-get update
 	  apt-get install -y build-essential python wget

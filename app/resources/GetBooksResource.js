@@ -2,6 +2,7 @@
     "use strict";
 
     var LibraryDAO = require('../dao/LibraryDAO');
+
     let Book = require('../dao/books.js');
 
     let books = [
@@ -65,7 +66,27 @@
     ];
 
     module.exports = function (callback, title) { // The title is optional and is only present when searching. (You need yo modify the books.js file first)
-        callback(books);
+        LibraryDAO.readXMLFile(function(books) {
+            let books2 = [];
+
+            for (let i = 0; i < books.length; i++) {
+                let book = new Book(
+                    books[i]["$"].id,
+                    books[i].title,
+                    books[i].author,
+                    books[i].genre,
+                    books[i].price,
+                    books[i].publish_date,
+                    books[i].description
+                );
+
+                books2.push(book);
+            }
+
+            callback(books2);
+            //callback(JSON.stringify(book));
+            //console.log(book[0]['$'].id);
+        });
     };
 
 }());
