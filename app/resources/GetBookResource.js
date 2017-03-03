@@ -3,9 +3,8 @@
 
     var LibraryDAO = require('../dao/LibraryDAO');
 
-
     module.exports = function (id, callback) {
-
+        return "Function not implemented! :(";
     };
 
 }());

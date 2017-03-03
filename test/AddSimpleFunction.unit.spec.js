@@ -4,7 +4,6 @@ var AddSimpleFunction = require("../app/AddSimpleFunction");
 describe("Simple addition", function () {
 
     describe("describe what the test do here...", function () {
-
         it("describe..", function () {
             var a = 2;
             var b = 4;
