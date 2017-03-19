@@ -47,7 +47,11 @@
                 if (error) {
                     return console.log(error);
                 }
+
+                console.log("Removed a book! :(");
             });
+
+            callback(newBooks);
         });
     };
 

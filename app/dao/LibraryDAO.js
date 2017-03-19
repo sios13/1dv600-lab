@@ -17,7 +17,7 @@
 
             fs.readFile(__dirname + "/../../books.xml", function(error, data) {
                 if (error) {
-                    return console.log(error);
+                    return callback(error);
                 }
 
                 parser.parseString(data, function (error, books) {
